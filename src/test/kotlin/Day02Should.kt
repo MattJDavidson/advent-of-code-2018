@@ -67,8 +67,19 @@ class Day02Should {
     }
 
     @Test
-    fun `part 1 solution`() {
+    fun `solve part 1`() {
         assert.that(checksum(input), equalTo(7533))
     }
 
+    @Test
+    fun `calculate distance of two strings`() {
+        assert.that(distance("abcde", "abcde"), equalTo(0))
+        assert.that(distance("fghij", "fguij"), equalTo(1))
+        assert.that(distance("abcde", "axcye"), equalTo(2))
+    }
+
+    @Test
+    fun `solve part 2`() {
+        assert.that(commonCharInPrototypes(input), equalTo("mphcuasvrnjzzkbgdtqeoylva"))
+    }
 }
