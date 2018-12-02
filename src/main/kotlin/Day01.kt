@@ -1,19 +1,10 @@
-import java.io.File
-
-const val day01_input = "/Users/Matt/workspace/advent-of-code-2018/src/main/resources/day01.txt"
-
-fun readFileAsStrings(filePath: String): List<String> = File(filePath).readLines()
-
-fun part1(filePath: String): Int =
-        readFileAsStrings(filePath)
-                .map(String::toInt)
-                .sum()
+fun part1(inputs: List<String>): Int = inputs.map(String::toInt).sum()
 
 fun hitCollision(inputs: List<Int>,
                  pastTotals: MutableList<Int> = mutableListOf(0),
                  total: Int = 0): Int {
     var localTotal = total
-    for (input in inputs) {
+    inputs.forEach { input ->
         localTotal += input
         if (localTotal in pastTotals)
             return localTotal
@@ -22,6 +13,6 @@ fun hitCollision(inputs: List<Int>,
     return hitCollision(inputs, pastTotals, localTotal)
 }
 
-fun part2(filePath: String): Int =
-        hitCollision((readFileAsStrings(filePath).map(String::toInt)))
+fun part2(inputs: List<String>): Int =
+        hitCollision(inputs.map(String::toInt))
 
